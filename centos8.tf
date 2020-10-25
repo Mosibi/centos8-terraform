@@ -73,27 +73,6 @@ resource "libvirt_domain" "kvm_domain" {
     network_name = "default"
     wait_for_lease = true
   }
-
-# connection {
-#   type     = "ssh"
-#   user     = "root"
-#   password = "eve"
-#   host     = self.network_interface.0.addresses.0
-# }
-  
-  # provisioner "file" {
-  #   source      = "~/.ssh/id_rsa.pub"
-  #   destination = "/root/.ssh/authorized_keys"
-  # }
-
-  # provisioner "local-exec" {
-  #   command = "toolbox run --container ansible ansible-playbook -u root -i '${self.network_interface.0.addresses.0},' playbook.yml"
-    
-  #   environment = {
-  #     ANSIBLE_HOST_KEY_CHECKING = "False"
-  #   }
-  # }
-
 }
 
 output "ip" {
